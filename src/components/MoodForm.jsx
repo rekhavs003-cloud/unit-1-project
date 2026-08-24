@@ -1,7 +1,11 @@
-import { useState } from "react";
 function MoodForm() {
+  function moodSave(event) {
+    event.preventDefault();
+    alert("Mood Saved!");
+  }
+
   return (
-    <div>
+    <form onSubmit={moodSave}>
       <h2>Record Your Mood</h2>
 
       <label>
@@ -12,12 +16,12 @@ function MoodForm() {
       <label>
         Mood:
         <select>
-          <option value="">Choose your mood</option>
-          <option value="1">1 - Very Bad</option>
-          <option value="2">2 - Bad</option>
-          <option value="3">3 - Okay</option>
-          <option value="4">4 - Good</option>
-          <option value="5">5 - Very Good</option>
+          <option value="">Select your mood</option>
+          <option value="1">1 - Happy</option>
+          <option value="2">2 - Tired</option>
+          <option value="3">3 - Calm</option>
+          <option value="4">4 - Stressed</option>
+          <option value="5">5 - Sad</option>
         </select>
       </label>
 
@@ -38,10 +42,9 @@ function MoodForm() {
         <textarea placeholder="How was your day?" />
       </label>
 
-      <button type="submit">Save Entry</button>
-
-    </div>
-  )
+      <button type="submit">Save</button>
+    </form>
+  );
 }
 
-export default MoodForm
+export default MoodForm;
