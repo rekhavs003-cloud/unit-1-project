@@ -1,4 +1,7 @@
+import { useState } from "react";
+
 function MoodForm() {
+  const [mood, setMood] = useState("");
   function moodSave(event) {
     event.preventDefault();
     alert("Mood Saved!");
@@ -15,7 +18,8 @@ function MoodForm() {
 
       <label>
         Mood:
-        <select>
+        <select value={mood}
+    onChange={(event) => setMood(event.target.value)}  >
           <option value="">Select your mood</option>
           <option value="1">1 - Happy</option>
           <option value="2">2 - Tired</option>
