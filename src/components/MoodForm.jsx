@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ChooseWeather from "./ChooseWeather";
 
 function MoodForm() {
   const [mood, setMood] = useState("");
@@ -8,12 +9,14 @@ function MoodForm() {
   function moodSave(event) {
   event.preventDefault();
 
-  alert(
-    `Date: ${date}
-Mood: ${mood}
-Weather: ${weather}
-Note: ${note}`
-  );
+  const moodEntry = {
+    date: date,
+    mood: mood,
+    weather: weather,
+    note: note
+  };
+
+  console.log(moodEntry);
 }
 
   return (
@@ -38,17 +41,10 @@ Note: ${note}`
         </select>
       </label>
 
-      <label>
-        Weather:
-        <select value = {weather}onChange={(event) => setWeather(event.target.value)}>
-          <option value="">Choose the weather</option>
-          <option value="sunny">Sunny</option>
-          <option value="cloudy">Cloudy</option>
-          <option value="rainy">Rainy</option>
-          <option value="snowy">Snowy</option>
-          <option value="stormy">Stormy</option>
-        </select>
-      </label>
+      <ChooseWeather
+  weather={weather}
+  setWeather={setWeather}
+/>
 
       <label>
         Note:
