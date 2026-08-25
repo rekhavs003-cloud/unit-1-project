@@ -2,9 +2,11 @@ import { useState } from "react";
 
 function MoodForm() {
   const [mood, setMood] = useState("");
+  const [weather, setWeather] = useState("");
+  const [date, setDate] = useState("");
   function moodSave(event) {
     event.preventDefault();
-    alert("Mood Saved!");
+    alert(`Mood saved for ${date}`);
   }
 
   return (
@@ -13,7 +15,7 @@ function MoodForm() {
 
       <label>
         Date:
-        <input type="date" />
+        <input type="date" value={date} onChange={(event) => setDate(event.target.value)} />
       </label>
 
       <label>
@@ -31,7 +33,7 @@ function MoodForm() {
 
       <label>
         Weather:
-        <select>
+        <select value = {weather}onChange={(event) => setWeather(event.target.value)}>
           <option value="">Choose the weather</option>
           <option value="sunny">Sunny</option>
           <option value="cloudy">Cloudy</option>
