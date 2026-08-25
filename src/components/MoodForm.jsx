@@ -4,10 +4,17 @@ function MoodForm() {
   const [mood, setMood] = useState("");
   const [weather, setWeather] = useState("");
   const [date, setDate] = useState("");
+  const [note, setNote] = useState("");
   function moodSave(event) {
-    event.preventDefault();
-    alert(`Mood saved for ${date}`);
-  }
+  event.preventDefault();
+
+  alert(
+    `Date: ${date}
+Mood: ${mood}
+Weather: ${weather}
+Note: ${note}`
+  );
+}
 
   return (
     <form onSubmit={moodSave}>
@@ -45,7 +52,9 @@ function MoodForm() {
 
       <label>
         Note:
-        <textarea placeholder="How was your day?" />
+        <textarea placeholder="How was your day?"  value={note}
+  onChange={(event) => setNote(event.target.value)}/>
+
       </label>
 
       <button type="submit">Save</button>
