@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../Button/Button";
 import "./MoodForm.css";
 
@@ -9,11 +8,27 @@ function MoodForm({
   updateMoodEntry,
   cancelEdit
 }) {
-  const [date, setDate] = useState(editingEntry?.date || "");
-  const [mood, setMood] = useState(editingEntry?.mood || "");
-  const [weather, setWeather] = useState(editingEntry?.weather || "");
-  const [note, setNote] = useState(editingEntry?.note || "");
+  const [date, setDate] = useState("");
+  const [mood, setMood] = useState("");
+  const [weather, setWeather] = useState("");
+  const [note, setNote] = useState("");
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    if (editingEntry) {
+      setDate(editingEntry.date);
+      setMood(editingEntry.mood);
+      setWeather(editingEntry.weather);
+      setNote(editingEntry.note);
+      setError("");
+    } else {
+      setDate("");
+      setMood("");
+      setWeather("");
+      setNote("");
+      setError("");
+    }
+  }, [editingEntry]);
 
   function handleSubmit(event) {
     event.preventDefault();
