@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 import { useEffect, useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
@@ -84,3 +85,19 @@ function App() {
 }
 
 export default App;
+=======
+import MoodForm from "./components/MoodForm"
+import MoodCalendar from "./components/MoodCalendar"
+
+function App() {
+  return (
+    <div>
+      <h1>Mood Tracker </h1>
+      <MoodForm />
+      <MoodCalendar />
+    </div>
+  )
+}
+
+export default App
+>>>>>>> origin/feature/mood-journal
