@@ -1,0 +1,48 @@
+.header {
+  background-color: #315c43;
+  padding: 18px 0;
+}
+
+.header-container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: #fffdf5;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.navigation {
+  display: flex;
+  gap: 20px;
+}
+
+.navigation a {
+  color: #fffdf5;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.navigation a:hover {
+  background-color: #47795b;
+}
+
+@media (max-width: 600px) {
+  .header-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .navigation {
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,55 @@
+.mood-form-section {
+  background-color: #fffdf5;
+  padding: 25px;
+  border-radius: 15px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 15px rgba(50, 80, 55, 0.1);
+}
+
+.mood-form-section h2 {
+  color: #315c43;
+}
+
+.mood-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mood-form input,
+.mood-form select,
+.mood-form textarea {
+  border: 1px solid #b8c9a9;
+  border-radius: 8px;
+  padding: 11px;
+  background-color: #faf8eb;
+}
+
+.mood-form input:focus,
+.mood-form select:focus,
+.mood-form textarea:focus {
+  outline: 2px solid #6d9b7a;
+}
+
+.mood-form label {
+  font-weight: bold;
+  color: #315c43;
+  margin-top: 8px;
+}
+
+.form-error {
+  background-color: #f8dede;
+  color: #9b3c3c;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.cancel-button {
+  background-color: #777;
+}

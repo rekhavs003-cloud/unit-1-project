@@ -1,0 +1,58 @@
+.mood-item {
+  background-color: #fffdf5;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  border-left: 7px solid #6d9b7a;
+  animation: appear 0.3s ease;
+}
+
+.mood-item h3 {
+  color: #315c43;
+  margin-top: 0;
+}
+
+.mood-1 { border-left-color: #b8b0a4; }
+.mood-2 { border-left-color: #c9a66b; }
+.mood-3 { border-left-color: #91a879; }
+.mood-4 { border-left-color: #6d9b7a; }
+.mood-5 { border-left-color: #47795b; }
+
+.item-buttons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.delete-button {
+  background-color: #9b5b52;
+}
+
+.delete-button:hover {
+  background-color: #7e4039;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .mood-item {
+    flex-direction: column;
+  }
+
+  .item-buttons {
+    justify-content: flex-start;
+  }
+}

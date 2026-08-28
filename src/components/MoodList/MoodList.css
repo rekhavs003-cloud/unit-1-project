@@ -1,0 +1,14 @@
+.mood-list {
+  margin-top: 30px;
+}
+
+.mood-list h2 {
+  color: #315c43;
+}
+
+.empty-message {
+  background-color: #fffdf5;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+}
