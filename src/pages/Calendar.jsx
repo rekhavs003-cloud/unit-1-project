@@ -1,25 +1,15 @@
-import React, { useState } from "react";
-
-import MoodCalendar from "../components/MoodCalendar/MoodCalendar";
+import React from "react";
 import WeeklyMoodReport from "../components/WeeklyMoodReport/WeeklyMoodReport";
 
 function Calendar({ moodEntries }) {
-  const [selectedMood, setSelectedMood] = useState("all");
-
   return (
     <section className="page">
 
-      <h1>Mood Calendar</h1>
+      <h1>📊 Mood Tracker</h1>
 
       <p>
-        Look at your mood entries and see how your days have been going.
+        See your weekly mood summary and track how you have been feeling.
       </p>
-
-      <MoodCalendar
-        moodEntries={moodEntries}
-        selectedMood={selectedMood}
-        setSelectedMood={setSelectedMood}
-      />
 
       <WeeklyMoodReport
         moodEntries={moodEntries}
