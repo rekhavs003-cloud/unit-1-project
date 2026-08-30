@@ -4,16 +4,15 @@ import "./WeeklyMoodReport.css";
 function WeeklyMoodReport({ moodEntries = [] }) {
   const today = new Date();
 
-  // Find the first day of this week.
+  // Start of the current week (Sunday)
   const startOfWeek = new Date(today);
-  startOfWeek.setDate(today.getDate() - today.getDay());
   startOfWeek.setHours(0, 0, 0, 0);
+  startOfWeek.setDate(today.getDate() - today.getDay());
 
-  // Find the first day of next week.
+  // Start of next week
   const endOfWeek = new Date(startOfWeek);
   endOfWeek.setDate(startOfWeek.getDate() + 7);
 
-  // Our five moods.
   const moods = [
     {
       name: "Happy",
@@ -42,7 +41,7 @@ function WeeklyMoodReport({ moodEntries = [] }) {
     }
   ];
 
-  // Start all mood counts at zero.
+  // Start every mood at zero
   const moodCounts = {
     Happy: 0,
     Unhappy: 0,
@@ -51,40 +50,62 @@ function WeeklyMoodReport({ moodEntries = [] }) {
     Calm: 0
   };
 
-  // Look at every saved mood entry.
+  // Count saved entries from the current week
   moodEntries.forEach((entry) => {
     if (!entry.date || !entry.mood) {
       return;
     }
 
+    const [year, month, day] =
+      entry.date.split("-").map(Number);
+
     const entryDate = new Date(
-      entry.date + "T00:00:00"
+      year,
+      month - 1,
+      day
     );
 
-    // Only count entries from this week.
     if (
       entryDate >= startOfWeek &&
       entryDate < endOfWeek
     ) {
-      if (moodCounts[entry.mood] !== undefined) {
-        moodCounts[entry.mood]++;
+      if (entry.mood === "Happy") {
+        moodCounts.Happy++;
+      }
+
+      if (entry.mood === "Unhappy") {
+        moodCounts.Unhappy++;
+      }
+
+      if (entry.mood === "Angry") {
+        moodCounts.Angry++;
+      }
+
+      if (entry.mood === "Anxious/Stressed") {
+        moodCounts["Anxious/Stressed"]++;
+      }
+
+      if (entry.mood === "Calm") {
+        moodCounts.Calm++;
       }
     }
   });
 
-  // Find the largest number.
+  // Find the largest number
   const largestCount = Math.max(
     ...Object.values(moodCounts),
     1
   );
 
-  // Create the message underneath the chart.
   function getWeeklyNote() {
     const happyDays = moodCounts.Happy;
 
     const totalEntries = Object.values(
       moodCounts
-    ).reduce((total, number) => total + number, 0);
+    ).reduce(
+      (total, number) => total + number,
+      0
+    );
 
     if (totalEntries === 0) {
       return "🌱 No mood entries yet this week. Start recording your mood to see your weekly report.";
@@ -95,11 +116,11 @@ function WeeklyMoodReport({ moodEntries = [] }) {
     }
 
     if (happyDays === 1) {
-      return "💛 You had one happy day this week. Be gentle with yourself. Drink water, eat nourishing food, get some movement, and make time for rest.";
+      return "💛 You had one happy day this week. Be gentle with yourself and make time for rest.";
     }
 
     if (happyDays === 0) {
-      return "💛 This week may have been difficult. Take care of yourself with good food, water, gentle movement, and enough rest.";
+      return "💛 This week may have been difficult. Take care of yourself with rest, water, nourishing food, and gentle movement.";
     }
 
     return "🌱 Keep checking in with yourself. Every mood is worth noticing.";
@@ -133,7 +154,9 @@ function WeeklyMoodReport({ moodEntries = [] }) {
                   {mood.emoji} {mood.name}
                 </span>
 
-                <strong>{count}</strong>
+                <strong>
+                  {count}
+                </strong>
               </div>
 
               <div className="bar-background">
@@ -168,4 +191,3 @@ function WeeklyMoodReport({ moodEntries = [] }) {
 }
 
 export default WeeklyMoodReport;
-
