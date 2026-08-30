@@ -10,7 +10,7 @@ function MoodForm({
 }) {
   const [date, setDate] = useState("");
   const [mood, setMood] = useState("");
-  const [weather, setWeather] = useState("");
+  const [energyLevel, setEnergyLevel] = useState("");
   const [note, setNote] = useState("");
   const [error, setError] = useState("");
 
@@ -19,12 +19,12 @@ function MoodForm({
     if (editingEntry) {
       setDate(editingEntry.date);
       setMood(editingEntry.mood);
-      setWeather(editingEntry.weather);
+      setEnergyLevel(editingEntry.energyLevel || "");
       setNote(editingEntry.note);
     } else {
       setDate("");
       setMood("");
-      setWeather("");
+      setEnergyLevel("");
       setNote("");
     }
 
@@ -45,8 +45,8 @@ function MoodForm({
       return;
     }
 
-    if (!weather) {
-      setError("Please choose the weather.");
+    if (!energyLevel) {
+      setError("Please choose your energy level.");
       return;
     }
 
@@ -61,7 +61,7 @@ function MoodForm({
       id: editingEntry ? editingEntry.id : Date.now(),
       date: date,
       mood: mood,
-      weather: weather,
+      energyLevel: energyLevel,
       note: note.trim()
     };
 
@@ -75,7 +75,7 @@ function MoodForm({
     // Clear the form after saving.
     setDate("");
     setMood("");
-    setWeather("");
+    setEnergyLevel("");
     setNote("");
   }
 
@@ -148,40 +148,40 @@ function MoodForm({
           </option>
         </select>
 
-        {/* Weather */}
-        <label htmlFor="weather">
-          Weather
+        {/* Energy Level */}
+        <label htmlFor="energyLevel">
+          Energy Level
         </label>
 
         <select
-          id="weather"
-          value={weather}
+          id="energyLevel"
+          value={energyLevel}
           onChange={(event) =>
-            setWeather(event.target.value)
+            setEnergyLevel(event.target.value)
           }
         >
           <option value="">
-            Choose weather
+            Choose your energy level
           </option>
 
-          <option value="Sunny">
-            ☀️ Sunny
+          <option value="High">
+            🔋 High
           </option>
 
-          <option value="Cloudy">
-            ☁️ Cloudy
+          <option value="Good">
+            🙂 Good
           </option>
 
-          <option value="Rainy">
-            🌧️ Rainy
+          <option value="Okay">
+            😐 Okay
           </option>
 
-          <option value="Snowy">
-            ❄️ Snowy
+          <option value="Low">
+            😴 Low
           </option>
 
-          <option value="Windy">
-            💨 Windy
+          <option value="Very Low">
+            🪫 Very Low
           </option>
         </select>
 
@@ -202,7 +202,6 @@ function MoodForm({
 
         {/* Buttons */}
         <div className="form-buttons">
-
           <Button type="submit">
             {editingEntry
               ? "Update Entry"
@@ -218,7 +217,6 @@ function MoodForm({
               Cancel
             </Button>
           )}
-
         </div>
       </form>
     </section>
