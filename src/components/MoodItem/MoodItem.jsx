@@ -4,15 +4,23 @@ import "./MoodItem.css";
 
 function MoodItem({ entry, onDelete, onEdit }) {
   const moodNames = {
-    1: "Very Sad",
-    2: "Sad",
-    3: "Okay",
-    4: "Happy",
-    5: "Very Happy"
+    Happy: "😊 Happy",
+    Unhappy: "😢 Unhappy",
+    Angry: "😠 Angry",
+    "Anxious/Stressed": "😰 Anxious/Stressed",
+    Calm: "😐 Calm"
+  };
+
+  const energyIcons = {
+    High: "🔋",
+    Good: "🙂",
+    Okay: "😐",
+    Low: "😴",
+    "Very Low": "🪫"
   };
 
   return (
-    <article className={`mood-item mood-${entry.mood}`}>
+    <article className="mood-item">
       <div className="mood-information">
         <h3>{moodNames[entry.mood]}</h3>
 
@@ -21,7 +29,8 @@ function MoodItem({ entry, onDelete, onEdit }) {
         </p>
 
         <p>
-          <strong>Weather:</strong> {entry.weather}
+          <strong>Energy Level:</strong>{" "}
+          {energyIcons[entry.energyLevel]} {entry.energyLevel}
         </p>
 
         <p>
@@ -30,7 +39,9 @@ function MoodItem({ entry, onDelete, onEdit }) {
       </div>
 
       <div className="item-buttons">
-        <Button onClick={() => onEdit(entry)}>Edit</Button>
+        <Button onClick={() => onEdit(entry)}>
+          Edit
+        </Button>
 
         <Button
           onClick={() => onDelete(entry.id)}
