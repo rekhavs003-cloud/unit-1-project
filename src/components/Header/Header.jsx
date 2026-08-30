@@ -6,16 +6,24 @@ function Header() {
   return (
     <header className="header">
       <div className="header-container">
-        <Link to="/" className="logo">
+
+        <Link to="/home" className="logo">
           🌿 Mood Tracker
         </Link>
 
-        <nav className="navigation" aria-label="Main navigation">
-          <Link to="/">Home</Link>
+        <nav
+          className="navigation"
+          aria-label="Main navigation"
+        >
+          <Link to="/home">Home</Link>
+
           <Link to="/journal">Journal</Link>
-          <Link to="/calendar">Calendar</Link>
+
+          <Link to="/calendar">Mood Tracker</Link>
+
           <Link to="/about">About</Link>
         </nav>
+
       </div>
     </header>
   );
