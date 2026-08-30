@@ -1,5 +1,6 @@
 import React from "react";
 import MoodCalendar from "../components/MoodCalendar/MoodCalendar";
+import WeeklyMoodReport from "../components/WeeklyMoodReport/WeeklyMoodReport";
 
 function Calendar({ moodEntries }) {
   return (
@@ -11,6 +12,8 @@ function Calendar({ moodEntries }) {
       </p>
 
       <MoodCalendar moodEntries={moodEntries} />
+
+      <WeeklyMoodReport moodEntries={moodEntries} />
     </section>
   );
 }

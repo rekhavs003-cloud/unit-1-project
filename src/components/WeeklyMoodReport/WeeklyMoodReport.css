@@ -1,0 +1,136 @@
+.weekly-report {
+  margin-top: 40px;
+  padding: 30px;
+  background-color: #fffdf5;
+  border-radius: 20px;
+  box-shadow: 0 5px 18px rgba(50, 80, 55, 0.12);
+}
+
+.weekly-report h2 {
+  text-align: center;
+  color: #315c43;
+  margin-bottom: 8px;
+  font-size: 1.8rem;
+}
+
+.weekly-report::after {
+  content: "See how your moods have been this week 🌱";
+  display: block;
+  text-align: center;
+  color: #6b7d70;
+  margin-bottom: 30px;
+}
+
+.mood-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.chart-item {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  align-items: center;
+  gap: 15px;
+}
+
+.chart-item span {
+  color: #315c43;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.bar-container {
+  height: 34px;
+  background-color: #edf2eb;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  min-width: 35px;
+  padding: 0 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  border-radius: 20px;
+
+  color: white;
+  font-weight: bold;
+
+  box-sizing: border-box;
+
+  transition: width 0.6s ease;
+}
+
+/* Happy */
+.happy-bar {
+  background-color: #6fa875;
+}
+
+/* Unhappy */
+.unhappy-bar {
+  background-color: #8fa7c4;
+}
+
+/* Angry */
+.angry-bar {
+  background-color: #c87868;
+}
+
+/* Anxious / Stressed */
+.anxious-bar {
+  background-color: #b49bc4;
+}
+
+/* Calm */
+.calm-bar {
+  background-color: #83aaa0;
+}
+
+/* Small animation when the chart appears */
+.bar {
+  animation: growBar 0.8s ease;
+}
+
+@keyframes growBar {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: var(--bar-width);
+  }
+}
+
+@media (max-width: 700px) {
+  .weekly-report {
+    padding: 20px;
+  }
+
+  .chart-item {
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+
+  .chart-item span {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .weekly-report {
+    padding: 16px;
+  }
+
+  .weekly-report h2 {
+    font-size: 1.5rem;
+  }
+
+  .bar-container {
+    height: 30px;
+  }
+}

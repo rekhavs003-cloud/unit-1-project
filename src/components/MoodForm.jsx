@@ -28,18 +28,20 @@ function MoodForm() {
         <input type="date" value={date} onChange={(event) => setDate(event.target.value)} />
       </label>
 
-      <label>
-        Mood:
-        <select value={mood}
-    onChange={(event) => setMood(event.target.value)}  >
-          <option value="">Select your mood</option>
-          <option value="1">1 - Happy</option>
-          <option value="2">2 - Tired</option>
-          <option value="3">3 - Calm</option>
-          <option value="4">4 - Stressed</option>
-          <option value="5">5 - Sad</option>
-        </select>
-      </label>
+      <label htmlFor="mood">How are you feeling?</label>
+
+<select
+  id="mood"
+  value={mood}
+  onChange={(event) => setMood(event.target.value)}
+>
+  <option value="">Choose a mood</option>
+  <option value="Happy">😊 Happy</option>
+  <option value="Unhappy">😢 Unhappy</option>
+  <option value="Angry">😠 Angry</option>
+  <option value="Anxious/Stressed">😰 Anxious/Stressed</option>
+  <option value="Calm">😐 Calm</option>
+</select>
 
       <ChooseWeather
   weather={weather}

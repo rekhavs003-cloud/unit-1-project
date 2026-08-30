@@ -4,6 +4,7 @@ import { useState } from "react";
 import MoodForm from "../components/MoodForm/MoodForm";
 import MoodList from "../components/MoodList/MoodList";
 
+
 function Journal({
   moodEntries,
   addMoodEntry,
@@ -43,6 +44,8 @@ function Journal({
         onDelete={deleteMoodEntry}
         onEdit={startEditing}
       />
+
+      
     </section>
   );
 }

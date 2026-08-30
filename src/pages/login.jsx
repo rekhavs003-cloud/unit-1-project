@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
@@ -13,24 +13,19 @@ function Login() {
     event.preventDefault();
 
     if (!username.trim() || !password.trim()) {
-      setError("Please enter your username and password.");
+      setError("Please enter both username and password.");
       return;
     }
 
     setError("");
-
-   
-    localStorage.setItem("loggedIn", "true");
-
-    navigate("/journal");
+    navigate("/home");
   }
 
   return (
-    <section className="page login-page">
-      <div className="card login-card">
-        <h1>Welcome to My Mood Journal 🌱</h1>
-
-        <p>Please log in to continue.</p>
+    <section className="login-page">
+      <div className="login-container">
+        <h1>Mood Tracker</h1>
+        <p>Log in to continue to your mood journal.</p>
 
         <form onSubmit={handleLogin}>
           <label htmlFor="username">Username</label>
@@ -39,7 +34,7 @@ function Login() {
             type="text"
             value={username}
             onChange={(event) => setUsername(event.target.value)}
-            placeholder="Enter username"
+            placeholder="Enter your username"
           />
 
           <label htmlFor="password">Password</label>
@@ -48,12 +43,12 @@ function Login() {
             type="password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
-            placeholder="Enter password"
+            placeholder="Enter your password"
           />
 
-          {error && <p className="form-error">{error}</p>}
+          {error && <p className="login-error">{error}</p>}
 
-          <button type="submit">Login</button>
+          <button type="submit">Log In</button>
         </form>
       </div>
     </section>
@@ -61,5 +56,3 @@ function Login() {
 }
 
 export default Login;
-
-

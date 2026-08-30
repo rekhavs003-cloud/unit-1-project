@@ -2,40 +2,29 @@ import React, { useState } from "react";
 import "./MoodCalendar.css";
 
 const moodInfo = {
-  1: { name: "Very Sad", emoji: "😢" },
-  2: { name: "Sad", emoji: "😞" },
-  3: { name: "Okay", emoji: "😐" },
-  4: { name: "Happy", emoji: "😊" },
-  5: { name: "Very Happy", emoji: "😍" }
+  Happy: { name: "Happy", emoji: "😊" },
+  Unhappy: { name: "Unhappy", emoji: "😢" },
+  Angry: { name: "Angry", emoji: "😠" },
+  "Anxious/Stressed": {
+    name: "Anxious/Stressed",
+    emoji: "😰"
+  },
+  Calm: { name: "Calm", emoji: "😐" }
 };
-
-// Mock data for testing the calendar
-const mockMoodEntries = [
-  { id: 1, date: "2026-08-03", mood: 4, weather: "Sunny" },
-  { id: 2, date: "2026-08-06", mood: 5, weather: "Sunny" },
-  { id: 3, date: "2026-08-10", mood: 3, weather: "Cloudy" },
-  { id: 4, date: "2026-08-13", mood: 2, weather: "Rainy" },
-  { id: 5, date: "2026-08-17", mood: 4, weather: "Sunny" },
-  { id: 6, date: "2026-08-21", mood: 5, weather: "Clear" },
-  { id: 7, date: "2026-08-25", mood: 3, weather: "Cloudy" }
-];
 
 function MoodCalendar({ moodEntries }) {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedMood, setSelectedMood] = useState("all");
 
-  // Use real entries when they exist.
-  // Otherwise use mock data.
-  const entries =
-    moodEntries && moodEntries.length > 0
-      ? moodEntries
-      : mockMoodEntries;
+  // Use only real mood entries from the user.
+  const entries = moodEntries || [];
 
+  // Filter entries based on the selected mood.
   const filteredEntries =
     selectedMood === "all"
       ? entries
       : entries.filter(
-          (entry) => String(entry.mood) === String(selectedMood)
+          (entry) => entry.mood === selectedMood
         );
 
   const year = currentDate.getFullYear();
@@ -46,7 +35,11 @@ function MoodCalendar({ moodEntries }) {
   });
 
   const firstDay = new Date(year, month, 1).getDay();
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const daysInMonth = new Date(
+    year,
+    month + 1,
+    0
+  ).getDate();
 
   function previousMonth() {
     setCurrentDate(new Date(year, month - 1, 1));
@@ -73,21 +66,24 @@ function MoodCalendar({ moodEntries }) {
 
   const calendarDays = [];
 
-  // Empty spaces before the first day of the month
+  // Empty spaces before the first day of the month.
   for (let i = 0; i < firstDay; i++) {
     calendarDays.push(
-      <div className="calendar-cell empty-cell" key={`empty-${i}`}></div>
+      <div
+        className="calendar-cell empty-cell"
+        key={`empty-${i}`}
+      ></div>
     );
   }
 
-  // Days of the month
+  // Create the calendar days.
   for (let day = 1; day <= daysInMonth; day++) {
     const entry = getEntryForDay(day);
 
     calendarDays.push(
       <div
         className={`calendar-cell ${
-          entry ? `mood-${entry.mood}` : ""
+          entry ? "has-mood" : ""
         }`}
         key={day}
       >
@@ -113,11 +109,6 @@ function MoodCalendar({ moodEntries }) {
 
       <div className="calendar-top">
 
-        <div>
-          <h2>🌿 Mood Calendar</h2>
-          <p>Track your mood throughout the month.</p>
-        </div>
-
         <div className="mood-filter">
           <label htmlFor="mood-filter">
             Filter:
@@ -130,12 +121,29 @@ function MoodCalendar({ moodEntries }) {
               setSelectedMood(event.target.value)
             }
           >
-            <option value="all">All moods</option>
-            <option value="1">😢 Very Sad</option>
-            <option value="2">😞 Sad</option>
-            <option value="3">😐 Okay</option>
-            <option value="4">😊 Happy</option>
-            <option value="5">😍 Very Happy</option>
+            <option value="all">
+              All moods
+            </option>
+
+            <option value="Happy">
+              😊 Happy
+            </option>
+
+            <option value="Unhappy">
+              😢 Unhappy
+            </option>
+
+            <option value="Angry">
+              😠 Angry
+            </option>
+
+            <option value="Anxious/Stressed">
+              😰 Anxious/Stressed
+            </option>
+
+            <option value="Calm">
+              😐 Calm
+            </option>
           </select>
         </div>
 
@@ -184,11 +192,11 @@ function MoodCalendar({ moodEntries }) {
 
       <div className="mood-legend">
 
-        <span>😢 Very Sad</span>
-        <span>😞 Sad</span>
-        <span>😐 Okay</span>
         <span>😊 Happy</span>
-        <span>😍 Very Happy</span>
+        <span>😢 Unhappy</span>
+        <span>😠 Angry</span>
+        <span>😰 Anxious/Stressed</span>
+        <span>😐 Calm</span>
 
       </div>
 

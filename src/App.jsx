@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from "react";
 import { useEffect, useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
@@ -16,7 +15,6 @@ import "./App.css";
 function App() {
   const [moodEntries, setMoodEntries] = useState([]);
 
- 
   useEffect(() => {
     const savedEntries = localStorage.getItem("moodEntries");
 
@@ -25,7 +23,6 @@ function App() {
     }
   }, []);
 
-  
   useEffect(() => {
     localStorage.setItem("moodEntries", JSON.stringify(moodEntries));
   }, [moodEntries]);
@@ -54,9 +51,11 @@ function App() {
 
       <main>
         <Routes>
-
-          <Route path="/login" element={<Login />} />
           <Route path="/" element={<Navigate to="/login" replace />} />
+
+<Route path="/login" element={<Login />} />
+
+<Route path="/home" element={<Home />} />
 
           <Route
             path="/journal"
@@ -85,19 +84,3 @@ function App() {
 }
 
 export default App;
-=======
-import MoodForm from "./components/MoodForm"
-import MoodCalendar from "./components/MoodCalendar"
-
-function App() {
-  return (
-    <div>
-      <h1>Mood Tracker </h1>
-      <MoodForm />
-      <MoodCalendar />
-    </div>
-  )
-}
-
-export default App
->>>>>>> origin/feature/mood-journal
