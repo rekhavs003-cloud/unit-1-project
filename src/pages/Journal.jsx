@@ -1,9 +1,8 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 
 import MoodForm from "../components/MoodForm/MoodForm";
 import MoodList from "../components/MoodList/MoodList";
-
+import MoodCalendar from "../components/MoodCalendar/MoodCalendar";
 
 function Journal({
   moodEntries,
@@ -30,22 +29,46 @@ function Journal({
     <section className="page">
       <h1>My Mood Journal 🌱</h1>
 
-      <p>Record how you feel and what your day was like.</p>
+      <p>
+        Record how you feel and what your day was like.
+      </p>
 
-      <MoodForm
-        addMoodEntry={addMoodEntry}
-        editingEntry={editingEntry}
-        updateMoodEntry={handleUpdate}
-        cancelEdit={cancelEdit}
-      />
+      <div className="journal-layout">
 
-      <MoodList
-        moodEntries={moodEntries}
-        onDelete={deleteMoodEntry}
-        onEdit={startEditing}
-      />
+        {/* LEFT SIDE - MOOD FORM */}
+        <div className="journal-form-column">
+          <MoodForm
+            addMoodEntry={addMoodEntry}
+            editingEntry={editingEntry}
+            updateMoodEntry={handleUpdate}
+            cancelEdit={cancelEdit}
+          />
+        </div>
 
-      
+        {/* RIGHT SIDE - CALENDAR AND NOTES */}
+        <div className="journal-right-column">
+
+          {/* Calendar */}
+          <div className="journal-calendar">
+            <h2>Mood Calendar</h2>
+
+            <MoodCalendar
+              moodEntries={moodEntries}
+            />
+          </div>
+
+          {/* Notes / Saved Entries */}
+          <div className="journal-notes">
+            <MoodList
+              moodEntries={moodEntries}
+              onDelete={deleteMoodEntry}
+              onEdit={startEditing}
+            />
+          </div>
+
+        </div>
+
+      </div>
     </section>
   );
 }
