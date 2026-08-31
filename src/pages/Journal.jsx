@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 import MoodForm from "../components/MoodForm/MoodForm";
-import MoodList from "../components/MoodList/MoodList";
 import MoodCalendar from "../components/MoodCalendar/MoodCalendar";
+import MoodList from "../components/MoodList/MoodList";
 
 function Journal({
   moodEntries,
@@ -26,17 +26,20 @@ function Journal({
   }
 
   return (
-    <section className="page">
+    <section className="journal-page">
+
       <h1>My Mood Journal 🌱</h1>
 
-      <p>
+      <p className="journal-introduction">
         Record how you feel and what your day was like.
       </p>
 
-      <div className="journal-layout">
 
-        {/* LEFT SIDE - MOOD FORM */}
-        <div className="journal-form-column">
+      {/* Today's Mood + Calendar */}
+
+      <div className="journal-top-section">
+
+        <div className="journal-mood-section">
           <MoodForm
             addMoodEntry={addMoodEntry}
             editingEntry={editingEntry}
@@ -45,30 +48,28 @@ function Journal({
           />
         </div>
 
-        {/* RIGHT SIDE - CALENDAR AND NOTES */}
-        <div className="journal-right-column">
 
-          {/* Calendar */}
-          <div className="journal-calendar">
-            <h2>Mood Calendar</h2>
-
-            <MoodCalendar
-              moodEntries={moodEntries}
-            />
-          </div>
-
-          {/* Notes / Saved Entries */}
-          <div className="journal-notes">
-            <MoodList
-              moodEntries={moodEntries}
-              onDelete={deleteMoodEntry}
-              onEdit={startEditing}
-            />
-          </div>
-
+        <div className="journal-calendar-section">
+          <MoodCalendar
+            moodEntries={moodEntries}
+          />
         </div>
 
       </div>
+
+
+      {/* Journal Entries */}
+
+      <div className="journal-entries-section">
+
+        <MoodList
+          moodEntries={moodEntries}
+          onDelete={deleteMoodEntry}
+          onEdit={startEditing}
+        />
+
+      </div>
+
     </section>
   );
 }

@@ -1,14 +1,58 @@
+/* ================================
+   Your Journal
+================================ */
+
 .mood-list {
-  margin-top: 30px;
+  width: 100%;
+  margin: 0;
+  padding: 25px;
+  box-sizing: border-box;
+
+  background-color: #fffdf4;
+
+  border: 1px solid #dfe5dc;
+  border-radius: 14px;
 }
 
 .mood-list h2 {
-  color: #315c43;
+  margin: 0 0 20px;
+
+  text-align: center;
+
+  font-size: 24px;
+  color: #3f6f4f;
 }
 
+
+/* Empty journal */
+
 .empty-message {
-  background-color: #fffdf5;
-  padding: 30px;
-  border-radius: 12px;
+  padding: 25px;
+
   text-align: center;
+
+  background-color: #f5f1df;
+
+  border-radius: 10px;
+
+  color: #5d725f;
+}
+
+.empty-message p {
+  margin: 6px 0;
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+  .mood-list {
+    padding: 18px;
+  }
+
+  .mood-list h2 {
+    font-size: 21px;
+  }
+
 }

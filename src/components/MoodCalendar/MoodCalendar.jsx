@@ -13,28 +13,28 @@ const moodInfo = {
 };
 
 function MoodCalendar({ moodEntries }) {
-  const [currentDate, setCurrentDate] = useState(new Date());
-  const [selectedMood, setSelectedMood] = useState("all");
+  const [currentDate, setCurrentDate] = useState(
+    new Date()
+  );
 
-  // Use only real mood entries from the user.
   const entries = moodEntries || [];
-
-  // Filter entries based on the selected mood.
-  const filteredEntries =
-    selectedMood === "all"
-      ? entries
-      : entries.filter(
-          (entry) => entry.mood === selectedMood
-        );
 
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth();
 
-  const monthName = currentDate.toLocaleString("default", {
-    month: "long"
-  });
+  const monthName = currentDate.toLocaleString(
+    "default",
+    {
+      month: "long"
+    }
+  );
 
-  const firstDay = new Date(year, month, 1).getDay();
+  const firstDay = new Date(
+    year,
+    month,
+    1
+  ).getDay();
+
   const daysInMonth = new Date(
     year,
     month + 1,
@@ -42,32 +42,44 @@ function MoodCalendar({ moodEntries }) {
   ).getDate();
 
   function previousMonth() {
-    setCurrentDate(new Date(year, month - 1, 1));
+    setCurrentDate(
+      new Date(year, month - 1, 1)
+    );
   }
 
   function nextMonth() {
-    setCurrentDate(new Date(year, month + 1, 1));
-  }
-
-  function goToCurrentMonth() {
-    setCurrentDate(new Date());
+    setCurrentDate(
+      new Date(year, month + 1, 1)
+    );
   }
 
   function getEntryForDay(day) {
-    const monthNumber = String(month + 1).padStart(2, "0");
-    const dayNumber = String(day).padStart(2, "0");
+    const monthNumber = String(
+      month + 1
+    ).padStart(2, "0");
 
-    const dateString = `${year}-${monthNumber}-${dayNumber}`;
+    const dayNumber = String(day).padStart(
+      2,
+      "0"
+    );
 
-    return filteredEntries.find(
-      (entry) => entry.date === dateString
+    const dateString =
+      `${year}-${monthNumber}-${dayNumber}`;
+
+    return entries.find(
+      (entry) =>
+        entry.date === dateString
     );
   }
 
   const calendarDays = [];
 
-  // Empty spaces before the first day of the month.
-  for (let i = 0; i < firstDay; i++) {
+  // Empty spaces before the first day.
+  for (
+    let i = 0;
+    i < firstDay;
+    i++
+  ) {
     calendarDays.push(
       <div
         className="calendar-cell empty-cell"
@@ -76,8 +88,12 @@ function MoodCalendar({ moodEntries }) {
     );
   }
 
-  // Create the calendar days.
-  for (let day = 1; day <= daysInMonth; day++) {
+  // Create calendar days.
+  for (
+    let day = 1;
+    day <= daysInMonth;
+    day++
+  ) {
     const entry = getEntryForDay(day);
 
     calendarDays.push(
@@ -87,17 +103,17 @@ function MoodCalendar({ moodEntries }) {
         }`}
         key={day}
       >
-        <span className="day-number">{day}</span>
+        <span className="day-number">
+          {day}
+        </span>
 
         {entry && (
           <div className="mood-display">
+
             <span className="mood-emoji">
               {moodInfo[entry.mood]?.emoji}
             </span>
 
-            <span className="weather">
-              {entry.weather}
-            </span>
           </div>
         )}
       </div>
@@ -107,47 +123,7 @@ function MoodCalendar({ moodEntries }) {
   return (
     <section className="calendar-section">
 
-      <div className="calendar-top">
-
-        <div className="mood-filter">
-          <label htmlFor="mood-filter">
-            Filter:
-          </label>
-
-          <select
-            id="mood-filter"
-            value={selectedMood}
-            onChange={(event) =>
-              setSelectedMood(event.target.value)
-            }
-          >
-            <option value="all">
-              All moods
-            </option>
-
-            <option value="Happy">
-              😊 Happy
-            </option>
-
-            <option value="Unhappy">
-              😢 Unhappy
-            </option>
-
-            <option value="Angry">
-              😠 Angry
-            </option>
-
-            <option value="Anxious/Stressed">
-              😰 Anxious/Stressed
-            </option>
-
-            <option value="Calm">
-              😐 Calm
-            </option>
-          </select>
-        </div>
-
-      </div>
+      {/* Calendar navigation */}
 
       <div className="calendar-navigation">
 
@@ -155,9 +131,9 @@ function MoodCalendar({ moodEntries }) {
           ← Previous
         </button>
 
-        <h1>
+        <h2>
           {monthName} {year}
-        </h1>
+        </h2>
 
         <button onClick={nextMonth}>
           Next →
@@ -165,12 +141,8 @@ function MoodCalendar({ moodEntries }) {
 
       </div>
 
-      <button
-        className="today-button"
-        onClick={goToCurrentMonth}
-      >
-        Today
-      </button>
+
+      {/* Calendar */}
 
       <div className="calendar">
 
@@ -189,6 +161,9 @@ function MoodCalendar({ moodEntries }) {
         </div>
 
       </div>
+
+
+      {/* Mood legend */}
 
       <div className="mood-legend">
 
