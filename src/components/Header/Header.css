@@ -1,3 +1,4 @@
+
 .header {
   background-color: #315c43;
   padding: 18px 0;
@@ -16,6 +17,7 @@
   color: #fffdf5;
   font-size: 24px;
   font-weight: bold;
+  text-decoration: none;
 }
 
 .navigation {
@@ -27,11 +29,13 @@
   color: #fffdf5;
   padding: 8px 12px;
   border-radius: 8px;
+  text-decoration: none;
   transition: background-color 0.3s ease;
 }
 
 .navigation a:hover {
   background-color: #47795b;
+  text-decoration: none;
 }
 
 @media (max-width: 600px) {

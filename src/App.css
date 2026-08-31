@@ -1,4 +1,237 @@
 /* =================================
+   Global App Styles
+================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f7f5e9;
+  color: #1f3324;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* =================================
+   Main App
+================================= */
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  width: 100%;
+}
+
+/* =================================
+   Home Page
+================================= */
+
+.home-page {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 45px 25px;
+  text-align: center;
+}
+
+.home-page h1 {
+  margin: 0 0 15px;
+  color: #315c43;
+  font-size: 34px;
+}
+
+.home-page p {
+  max-width: 700px;
+  margin: 10px auto;
+  color: #506653;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.home-message {
+  
+  font-style: italic;
+   color: #3f6048;
+}
+/* Home buttons */
+
+.home-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 25px;
+  flex-wrap: wrap;
+}
+
+.home-buttons a {
+  text-decoration: none;
+}
+
+.home-buttons button {
+  padding: 11px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #5f8f63;
+  color: white;
+  font-size: 15px;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.home-buttons button:hover {
+  background-color: #4d7c54;
+  transform: translateY(-2px);
+}
+
+/* =================================
+   Home Page Clover Animation
+================================= */
+
+.clover-animation {
+  position: relative;
+  width: 70px;
+  height: 75px;
+  margin: 0 auto 15px;
+}
+
+/* Green stem */
+
+.clover-stem {
+  position: absolute;
+  width: 5px;
+  height: 25px;
+  background-color: #5f8f63;
+  left: 50%;
+  bottom: 2px;
+  transform: translateX(-50%);
+  border-radius: 10px;
+}
+
+/* Clover */
+
+.clover {
+  position: absolute;
+  width: 46px;
+  height: 46px;
+  left: 50%;
+  top: 3px;
+  transform: translateX(-50%) scale(0.2);
+  animation: clover-grow 4s ease-in-out infinite;
+}
+
+/* Individual leaves */
+
+.leaf {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background-color: #6fa66f;
+  border-radius: 60% 40% 60% 40%;
+}
+
+/* Top-left leaf */
+
+.leaf-one {
+  left: 3px;
+  top: 3px;
+  transform: rotate(45deg);
+}
+
+/* Top-right leaf */
+
+.leaf-two {
+  right: 3px;
+  top: 3px;
+  transform: rotate(135deg);
+}
+
+/* Bottom-left leaf */
+
+.leaf-three {
+  left: 3px;
+  bottom: 3px;
+  transform: rotate(-45deg);
+}
+
+/* Bottom-right leaf */
+
+.leaf-four {
+  right: 3px;
+  bottom: 3px;
+  transform: rotate(225deg);
+}
+
+/* Clover center */
+
+.clover-center {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  background-color: #dfe6b5;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+/* Clover animation */
+
+@keyframes clover-grow {
+
+  0% {
+    transform: translateX(-50%) scale(0.2);
+    opacity: 0;
+  }
+
+  20% {
+    transform: translateX(-50%) scale(0.65);
+    opacity: 0.7;
+  }
+
+  40% {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+  }
+
+  55% {
+    transform: translateX(-50%) scale(1.08);
+    opacity: 1;
+  }
+
+  70% {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+  }
+
+  85% {
+    transform: translateX(-50%) scale(0.8);
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: translateX(-50%) scale(0.2);
+    opacity: 0;
+  }
+}
+
+/* =================================
    Journal Page Layout
 ================================= */
 
@@ -7,7 +240,6 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 25px;
-  box-sizing: border-box;
 }
 
 /* Journal page heading */
@@ -26,8 +258,9 @@
   font-size: 17px;
 }
 
-
-/* Today's Mood + Calendar */
+/* =================================
+   Today's Mood + Calendar
+================================= */
 
 .journal-top-section {
   display: grid;
@@ -36,14 +269,11 @@
   align-items: stretch;
 }
 
-
 /* Left side */
 
 .journal-mood-section {
   width: 100%;
-  box-sizing: border-box;
 }
-
 
 /* Right side */
 
@@ -52,19 +282,126 @@
   background-color: #fffdf4;
   border: 1px solid #dfe5dc;
   border-radius: 14px;
-  box-sizing: border-box;
 }
 
-
-/* Saved journal entries */
+/* =================================
+   Saved Journal Entries
+================================= */
 
 .journal-entries-section {
   width: 100%;
   margin-top: 30px;
 }
 
+/* =================================
+   General Links
+================================= */
 
-/* Mobile */
+a {
+  color: inherit;
+}
+
+/* =================================
+   About Page
+================================= */
+
+.about-page {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 25px;
+}
+
+.about-page h1 {
+  text-align: center;
+  color: #315c43;
+  margin-bottom: 20px;
+}
+
+.about-page p {
+  color: #506653;
+  line-height: 1.7;
+}
+
+/* =================================
+   Login Page
+================================= */
+
+.login-page {
+  min-height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 430px;
+  padding: 30px;
+  background-color: #fffdf5;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(50, 80, 55, 0.1);
+}
+
+.login-container h1 {
+  text-align: center;
+  color: #315c43;
+  margin-top: 0;
+}
+
+.login-container > p {
+  text-align: center;
+  color: #5d725f;
+}
+
+.login-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.login-container label {
+  font-weight: bold;
+  color: #315c43;
+  margin-top: 8px;
+}
+
+.login-container input {
+  padding: 11px;
+  border: 1px solid #b8c9a9;
+  border-radius: 8px;
+  background-color: #faf8eb;
+}
+
+.login-container input:focus {
+  outline: 2px solid #6d9b7a;
+}
+
+.login-container button {
+  margin-top: 10px;
+  padding: 11px;
+  border: none;
+  border-radius: 8px;
+  background-color: #5f8f63;
+  color: white;
+  font-size: 15px;
+}
+
+.login-container button:hover {
+  background-color: #4d7c54;
+}
+
+.login-error {
+  color: #9b3c3c;
+  background-color: #f8dede;
+  padding: 9px;
+  border-radius: 7px;
+}
+
+/* =================================
+   Responsive Layout
+================================= */
 
 @media (max-width: 800px) {
 
@@ -77,4 +414,31 @@
     gap: 20px;
   }
 
+  .home-page {
+    padding: 35px 15px;
+  }
+
+  .home-page h1 {
+    font-size: 28px;
+  }
+
+  .home-page p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 500px) {
+
+  .home-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .home-buttons button {
+    width: 200px;
+  }
+
+  .login-container {
+    padding: 22px;
+  }
 }
