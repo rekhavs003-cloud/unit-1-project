@@ -1,7 +1,6 @@
-<<<<<<< HEAD
 # Mood Tracker 🌿
 
-A beginner-level React mood and weather journal created for the LaunchCode Unit 1 Front-End React Application project.
+A beginner-level React mood journal created for the LaunchCode Unit 1 Front-End React Application project.
 
 ## Features
 
