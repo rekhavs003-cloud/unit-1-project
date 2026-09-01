@@ -2,13 +2,13 @@
   border: none;
   border-radius: 8px;
   padding: 10px 18px;
-  background-color: #47795b;
-  color: white;
+  background-color: #90beac;
+  color: #FFF9ED;
   font-weight: bold;
   transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 .button:hover {
-  background-color: #315c43;
+  background-color: #4F6F63;
   transform: translateY(-2px);
 }

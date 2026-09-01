@@ -63,3 +63,11 @@
   color: #a33a3a;
   margin: 5px 0;
 }
+.header {
+  background-color: #315C43;
+  padding: 18px 0;
+}
+
+.username {
+  color: #FFF9ED;
+}

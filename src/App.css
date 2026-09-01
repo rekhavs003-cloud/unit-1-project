@@ -54,7 +54,9 @@ main {
 .home-page h1 {
   margin: 0 0 15px;
   color: #315c43;
-  font-size: 34px;
+
+  /* Responsive font size using clamp */
+  font-size: clamp(28px, 4vw, 34px);
 }
 
 .home-page p {
@@ -66,11 +68,13 @@ main {
 }
 
 .home-message {
-  
   font-style: italic;
-   color: #3f6048;
+  color: #3f6048;
 }
-/* Home buttons */
+
+/* =================================
+   Home Buttons
+================================= */
 
 .home-buttons {
   display: flex;
@@ -100,7 +104,7 @@ main {
 }
 
 /* =================================
-   Home Page Clover Animation
+   Home Page Flower Animation
 ================================= */
 
 .clover-animation {
@@ -110,20 +114,9 @@ main {
   margin: 0 auto 15px;
 }
 
-/* Green stem */
-
-.clover-stem {
-  position: absolute;
-  width: 5px;
-  height: 25px;
-  background-color: #5f8f63;
-  left: 50%;
-  bottom: 2px;
-  transform: translateX(-50%);
-  border-radius: 10px;
-}
-
-/* Clover */
+/* =================================
+   Flower
+================================= */
 
 .clover {
   position: absolute;
@@ -191,39 +184,55 @@ main {
   z-index: 2;
 }
 
-/* Clover animation */
+/* =================================
+   Flower Animation
+================================= */
 
 @keyframes clover-grow {
+
+  /* Start small and invisible */
 
   0% {
     transform: translateX(-50%) scale(0.2);
     opacity: 0;
   }
 
+  /* Flower starts growing */
+
   20% {
     transform: translateX(-50%) scale(0.65);
     opacity: 0.7;
   }
+
+  /* Flower fully appears */
 
   40% {
     transform: translateX(-50%) scale(1);
     opacity: 1;
   }
 
+  /* Small gentle raise/grow */
+
   55% {
     transform: translateX(-50%) scale(1.08);
     opacity: 1;
   }
+
+  /* Comes back to normal size */
 
   70% {
     transform: translateX(-50%) scale(1);
     opacity: 1;
   }
 
+  /* Starts disappearing */
+
   85% {
     transform: translateX(-50%) scale(0.8);
     opacity: 0.7;
   }
+
+  /* Completely disappears */
 
   100% {
     transform: translateX(-50%) scale(0.2);
@@ -323,6 +332,19 @@ a {
   line-height: 1.7;
 }
 
+.about-page h2 {
+  color: #315c43;
+}
+
+.about-page ul {
+  padding-left: 25px;
+  color: #506653;
+}
+
+.about-page li {
+  margin-bottom: 8px;
+}
+
 /* =================================
    Login Page
 ================================= */
@@ -403,6 +425,8 @@ a {
    Responsive Layout
 ================================= */
 
+/* Breakpoint 1 */
+
 @media (max-width: 800px) {
 
   .journal-page {
@@ -418,14 +442,12 @@ a {
     padding: 35px 15px;
   }
 
-  .home-page h1 {
-    font-size: 28px;
-  }
-
   .home-page p {
     font-size: 16px;
   }
 }
+
+/* Breakpoint 2 */
 
 @media (max-width: 500px) {
 
@@ -440,5 +462,13 @@ a {
 
   .login-container {
     padding: 22px;
+  }
+
+  .about-page {
+    padding: 30px 18px;
+  }
+
+  .journal-page {
+    padding: 12px;
   }
 }

@@ -1,40 +1,33 @@
-import React from "react";
-import "./About.css";
-
 function About() {
   return (
     <section className="about-page">
-      <div className="about-card">
+      <h1>About Mood Tracker</h1>
 
-        <h1>About Mood Tracker</h1>
+      <p>
+        Mood Tracker is a simple and user-friendly mood journal designed to
+        help you check in with yourself and keep track of how you feel each
+        day. You can record your mood, add personal notes, and review your
+        entries over time.
+      </p>
 
-        <p className="about-introduction">
-          Mood Tracker is a beginner-friendly mood journal.It allows you to record how you feel each day and add information
-          about your thoughts.
-        </p>
+      <h2>What can you do?</h2>
 
-        <div className="about-section">
-          <h2>What can you do?</h2>
+      <ul>
+        <li>Record your mood for each day.</li>
+        <li>Add notes about your thoughts and experiences.</li>
+        <li>Edit your journal entries whenever needed.</li>
+        <li>Delete entries you no longer want to keep.</li>
+        <li>View your mood history on a calendar.</li>
+      </ul>
 
-          <ul>
-            <li>Add a daily mood entry.</li>
-            <li>Write a short note.</li>
-            <li>Edit an entry.</li>
-            <li>Delete an entry.</li>
-            <li>View entries on a calendar.</li>
-          </ul>
-        </div>
+      <h2>Why use Mood Tracker?</h2>
 
-        <div className="about-section">
-          <h2>Why use it?</h2>
-
-          <p>
-            A simple journal can help you pause, reflect, and become more
-            aware of your daily experiences.
-          </p>
-        </div>
-
-      </div>
+      <p>
+        Taking a few moments each day to reflect can help you become more
+        aware of your emotions and daily experiences. Mood Tracker provides
+        a simple and organized way to pause, reflect, and look back on your
+        mood journey.
+      </p>
     </section>
   );
 }

@@ -125,7 +125,7 @@ function WeeklyMoodReport({ moodEntries = [] }) {
     }
 
     if (happyDays === 1) {
-      return "💛 You had one happy day this week. Be gentle with yourself and make time for rest.";
+      return "💛 You had one happy day this week.hooray! Keep spreading those positive vibes and making more moments like this! 🌱💚 ";
     }
 
     return "💛 This week may have been difficult. Take care of yourself and keep checking in with your mood.";
@@ -169,7 +169,7 @@ function WeeklyMoodReport({ moodEntries = [] }) {
           </option>
 
           <option value="twoWeeksAgo">
-            2 Weeks Ago
+            Last 2 Weeks
           </option>
         </select>
 
